@@ -1,0 +1,249 @@
+
+/* DisasterShield AI - Disaster Map */
+
+.disaster-map-container {
+  width: 100%;
+  margin-top: 24px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+  box-sizing: border-box;
+}
+
+.disaster-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.disaster-map-title {
+  margin: 0;
+  color: #111827;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.disaster-map-subtitle {
+  margin: 7px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.disaster-map-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  background: #ecfdf5;
+  color: #047857;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.disaster-map-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+.disaster-map-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 18px;
+}
+
+.disaster-map-visual {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid #dbeafe;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      #dbeafe 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      #dbeafe 40px
+    ),
+    #eff6ff;
+}
+
+.disaster-map-river {
+  position: absolute;
+  width: 150%;
+  height: 65px;
+  left: -20%;
+  top: 48%;
+  background: rgba(56, 189, 248, 0.25);
+  border-top: 2px solid rgba(14, 165, 233, 0.45);
+  border-bottom: 2px solid rgba(14, 165, 233, 0.45);
+  transform: rotate(-18deg);
+}
+
+.disaster-map-road {
+  position: absolute;
+  width: 130%;
+  height: 12px;
+  left: -15%;
+  top: 28%;
+  background: #ffffff;
+  border-top: 2px solid #cbd5e1;
+  border-bottom: 2px solid #cbd5e1;
+  transform: rotate(24deg);
+}
+
+.disaster-map-marker {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 18px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.disaster-map-marker:hover {
+  transform: scale(1.15);
+}
+
+.disaster-marker-critical {
+  background: #dc2626;
+}
+
+.disaster-marker-high {
+  background: #f97316;
+}
+
+.disaster-marker-medium {
+  background: #2563eb;
+}
+
+.disaster-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 15px 0 0;
+}
+
+.disaster-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #4b5563;
+  font-size: 12px;
+}
+
+.disaster-legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.disaster-legend-critical {
+  background: #dc2626;
+}
+
+.disaster-legend-high {
+  background: #f97316;
+}
+
+.disaster-legend-medium {
+  background: #2563eb;
+}
+
+.disaster-map-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.disaster-map-stat {
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 13px;
+  transition: transform 0.2s ease;
+}
+
+.disaster-map-stat:hover {
+  transform: translateY(-2px);
+}
+
+.disaster-map-stat-label {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.disaster-map-stat-value {
+  display: block;
+  margin-top: 7px;
+  color: #111827;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.disaster-map-stat-note {
+  display: block;
+  margin-top: 5px;
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.disaster-map-empty {
+  padding: 30px 15px;
+  color: #64748b;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 850px) {
+  .disaster-map-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .disaster-map-sidebar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .disaster-map-container {
+    padding: 14px;
+  }
+
+  .disaster-map-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .disaster-map-visual {
+    min-height: 280px;
+  }
+
+  .disaster-map-title {
+    font-size: 18px;
+  }
+}
